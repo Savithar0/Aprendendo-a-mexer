@@ -1,13 +1,39 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/af">Af</router-link>
+    <div v-if="!logado" class="deslogado">
+      login:
+      <input type="text" v-model="login" />
+      <br />senha:
+      <input type="password" v-model="senha" />
     </div>
-    <router-view/>
+    <div v-if="logado" class="logado">
+      <div id="nav">
+        <router-link to="/">Home</router-link>|
+        <router-link to="/af">Af</router-link>
+      </div>
+      <router-view />
+    </div>
   </div>
 </template>
+<script>
+// @ is an alias to /src
 
+export default {
+  data: () => ({
+    login: "",
+    senha: ""
+  }),
+  computed: {
+    logado() {
+      let retorno = false;
+      if (this.login === "1" && this.senha === "2") {
+        retorno = true;
+      }
+      return retorno;
+    }
+  }
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
