@@ -7,10 +7,10 @@
         <v-btn x-large color="sucess" @click="mostrarbarraocultarsalario()" dark>{{botaosalario}}</v-btn>
         <br />
         <br />
-        <v-btn x-large color="success" dark>Despesa</v-btn>
+        <v-btn x-large color="success" @click="mostrarbarraocultardespesa()" dark>{{botaodespesa}}</v-btn>
         <br />
         <br />
-        <v-btn x-large color="success" dark>Crédito</v-btn>
+        <v-btn x-large color="success" @click="mostrarbarraocultarcredito()" dark>{{botaocredito}}</v-btn>
         <br />
         <br />
         <v-btn x-large color="success" @click="window.frames.closewindow()" dark>Fechar</v-btn>
@@ -28,7 +28,7 @@
           <br />
           <input placeholder="Descrição" />
         </div>
-        <div class="credito" v-if="mostrarcampocredito">
+        <div class="credito" v-if="mostrarcampodocredito">
           <h1>Crédito</h1>
           <input placeholder="valor" />
           <br />
@@ -45,7 +45,7 @@ export default {
   data: () => ({
     mostrarcampodosalario: false,
     mostrarcampodespesa: false,
-    mostrarcampocredito: false,
+    mostrarcampodocredito: false,
     contador: 0
   }),
   methods: {
@@ -55,7 +55,21 @@ export default {
       } else {
         this.mostrarcampodosalario = false;
       }
-    }
+    },
+      mostrarbarraocultardespesa() {
+        if (this.mostrarcampodespesa == false) {
+          this.mostrarcampodespesa = true;
+        } else {
+          this.mostrarcampodespesa = false;
+        }
+    },
+      mostrarbarraocultarcredito() {
+        if (this.mostrarcampodocredito == false) {
+        this.mostrarcampodocredito = true;
+      } else {
+        this.mostrarcampodocredito = false;
+      }
+    },
   },
   computed: {
     botaosalario() {
@@ -64,7 +78,21 @@ export default {
       } else {
         return "Fechar"
       }
+    },
+    botaodespesa() {
+      if (this.mostrarcampodespesa == false) {
+        return "Despesa"
+      } else {
+        return "Fechar"
+      }
+    },
+    botaocredito() {
+      if (this.mostrarcampodocredito == false) {
+        return "Crédito"
+    } else {
+      return "Fechar"
     }
+  }, 
   }
 };
 </script>
