@@ -4,16 +4,18 @@
     <h1>Aplicativo Financeiro</h1>
     <div class="geral">
       <div class="botoes">
+      <div v-if="!mostrarcampodespesa && !mostrarcampodocredito">
         <v-btn x-large color="sucess" @click="mostrarbarraocultarsalario()" dark>{{botaosalario}}</v-btn>
         <br />
         <br />
-        <v-btn x-large color="success" @click="mostrarbarraocultardespesa()" dark>{{botaodespesa}}</v-btn>
+      </div>
+        <v-btn x-large color="success" v-if="!mostrarcampodosalario && !mostrarcampodocredito" @click="mostrarbarraocultardespesa()" dark>{{botaodespesa}}</v-btn>
         <br />
         <br />
-        <v-btn x-large color="success" @click="mostrarbarraocultarcredito()" dark>{{botaocredito}}</v-btn>
+        <v-btn x-large color="success" v-if="!mostrarcampodosalario && !mostrarcampodespesa" @click="mostrarcampodocredito=!mostrarcampodocredito" dark>{{botaocredito}}</v-btn>
         <br />
         <br />
-        <v-btn x-large color="success" @click="window.frames.closewindow()" dark>Fechar</v-btn>
+        <v-btn x-large color="success" v-if="!mostrarcampodosalario && !mostrarcampodespesa && !mostrarcampodocredito " @click="window.frames.closewindow()" dark>Fechar</v-btn>
       </div>
       <div class="campus">
         <div class="salario" v-if="mostrarcampodosalario">
@@ -62,13 +64,6 @@ export default {
         } else {
           this.mostrarcampodespesa = false;
         }
-    },
-      mostrarbarraocultarcredito() {
-        if (this.mostrarcampodocredito == false) {
-        this.mostrarcampodocredito = true;
-      } else {
-        this.mostrarcampodocredito = false;
-      }
     },
   },
   computed: {
