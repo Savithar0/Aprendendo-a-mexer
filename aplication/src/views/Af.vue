@@ -100,36 +100,36 @@
           -->
           <v-btn x-large color="sucess" @click="criarsalario()" dark>Criar Salário</v-btn>
           <!--
-            tag input:{
+            tag v-text-field:{
               Campo para digitar e receber um valor,
               v-model:{ define a variavel que o imput ira ultilizar
                 neste caso seria a variavel "salario.valor"
               }
               placeholder: dá uma dica do campo
           }-->
-          <input placeholder="valor" v-model="salario.valor" />
+          <v-text-field label="Valor" placeholder="valor" v-model="salario.valor" />
           <br />
           <!--
-            tag input:{
+            tag v-text-field:{
               Campo para digitar e receber um valor,
               v-model:{ define a variavel que o imput ira ultilizar
                 neste caso seria a variavel "salario.descricao"
               }
               placeholder: dá uma dica do campo
           }-->
-          <input placeholder="Descrição" v-model="salario.descricao" />
+          <v-text-field label="Descrição" placeholder="Descrição" v-model="salario.descricao" />
         </div>
         <div class="despesa" v-if="mostrarcampodespesa">
           <h1>Despesas</h1>
-          <input placeholder="valor" />
+          <v-text-field label="Valor" placeholder="valor" />
           <br />
-          <input placeholder="Descrição" />
+          <v-text-field label="Descrição" placeholder="Descrição" />
         </div>
         <div class="credito" v-if="mostrarcampodocredito">
           <h1>Crédito</h1>
-          <input placeholder="valor" />
+          <v-text-field label="Valor" placeholder="valor" />
           <br />
-          <input placeholder="Descrição" />
+          <v-text-field label="Descrição" placeholder="Descrição" />
         </div>
       </div>
       <div class="dados">
@@ -191,8 +191,15 @@
                       ambos estão passando o parametro posicaonalista, que será recebido no metodo
                   }
                 -->
-                <v-btn x-medium color="sucess" @click="editarsalario(posicaonalista)" dark>Editar</v-btn>.
-                <v-btn x-medium color="sucess" @click="apagarsalario(posicaonalista)" dark>Apagar</v-btn>
+                <v-btn color="primary" @click="editarsalario(posicaonalista)" fab small dark>
+                  <!--
+                    tag v-icon: exibe um icone de lapis
+                  -->
+                  <v-icon>mdi-pencil</v-icon>
+                </v-btn>.
+                <v-btn x-medium color="sucess" @click="apagarsalario(posicaonalista)" fab small dark>
+                  <v-icon>mdi-delete</v-icon>
+                </v-btn>
               </td>
             </tr>
           </table>
@@ -310,7 +317,7 @@ export default {
 };
 </script>
 <style  scoped>
-input {
+v-text-field {
   margin-top: 2px;
   border: solid 1px;
   border-color: blue;

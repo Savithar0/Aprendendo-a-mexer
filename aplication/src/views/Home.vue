@@ -25,24 +25,24 @@
       -->
       <br />
       <!--
-        tag input:{
+        tag v-text-field:{
           Campo para diigtar e receber um valor,
           v-model:{ define a variavel que o imput ira ultilizar
             neste caso seria a variavel "variavel"
           }
           type: é o cara que define o tipo de dato que o campo recebe, neste caso um tipo texto
       }-->
-      <input type="text" v-model="variavel" />
+      <v-text-field label="Variavel" type="text" v-model="variavel" />
       <!--
-        tag input:{
+        tag v-text-field:{
           Campo para diigtar e receber um valor,
           v-model:{ define a variavel que o imput ira ultilizar
             neste caso seria a variavel "color"
           }
           type: é o cara que define o tipo de dato que o campo recebe, neste caso um tipo texto
       }-->
-      cor:
-      <input type="text" v-model="color" />
+      cor: {{color}}
+      <v-color-picker  class="ma-2" show-swatches v-model="color" />
     </div>
      <!-- 
        tag HelloWorld: chama um componete importado dento do script, logo abaixo do </template>
