@@ -13,28 +13,34 @@
     }-->
     <div v-if="!logado" class="deslogado">
       <!--
-        tag input:{
+        tag v-text-field:{
           Campo para diigtar e receber um valor,
           v-model:{ define a variavel que o imput ira ultilizar
             neste caso seria a variavel do Login
           }
       }-->
-      login:
-      <input type="text" v-model="login" />
+      <v-text-field label="Login" type="text" v-model="login" 
+        hint="O login é 1"/>
       <!--
         tag br: serve para pular 1 linha
       -->
       <br />
       <!--
-        tag input:{
+        tag v-text-field:{
           Campo para diigtar e receber um valor,
           v-model:{ define a variavel que o imput ira ultilizar
             neste caso seria a variavel do senha
           }
           type: é o cara que define o tipo de dato que o campo recebe, neste caso um tipo password, senha
       }-->
-      senha:
-      <input type="password" v-model="senha" />
+      <v-text-field 
+        label="Senha"
+        v-model="senha"
+        :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+        :type="show1 ? 'text' : 'password'"
+        hint="A senha é 2"
+        @click:append="show1 = !show1"
+      />
     </div>
     <!--
       tag div:{
@@ -49,8 +55,9 @@
           tag router-link: dereciona o usuario para a pagina definida no parametro "to"
           as paginas são configuradas dentro de 'router/index.js'
         -->
-        <router-link to="/">Home</router-link>|
-        <router-link to="/af">Af</router-link>
+        <router-link to="/">Home</router-link> - | - 
+        <router-link to="/af">Af</router-link> - | - 
+        <router-link to="/appfinanceiro">App Financeiro</router-link>
       </div>
         <!--
           tag router-view: exibe a pagina selecionada acima
@@ -66,7 +73,8 @@ export default {
   // data: define todas as variaveis globais do arquivo
   data: () => ({
     login: "",
-    senha: ""
+    senha: "",
+    show1: false
   }),
   // compute: define variaveis globais que são calculadas
   computed: {
