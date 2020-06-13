@@ -19,8 +19,7 @@
             neste caso seria a variavel do Login
           }
       }-->
-      <v-text-field label="Login" type="text" v-model="login" 
-        hint="O login é 1"/>
+      <v-text-field label="Login" type="text" v-model="login" hint="O login é 1" />
       <!--
         tag br: serve para pular 1 linha
       -->
@@ -33,7 +32,7 @@
           }
           type: é o cara que define o tipo de dato que o campo recebe, neste caso um tipo password, senha
       }-->
-      <v-text-field 
+      <v-text-field
         label="Senha"
         v-model="senha"
         :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
@@ -50,31 +49,39 @@
             caso verdadeira exibe a div, caso falso não exibe nada
     }-->
     <div v-if="logado" class="logado">
-      <div id="nav">
+      <div class="esquerda">
+        <v-btn x-medium color="#1600f1" @click.stop="drawer = !drawer" fab small dark>
+          <v-icon>mdi-menu</v-icon>
+        </v-btn>
+      </div>
+      <v-navigation-drawer v-model="drawer" absolute temporary>
         <!--
           tag router-link: dereciona o usuario para a pagina definida no parametro "to"
           as paginas são configuradas dentro de 'router/index.js'
         -->
-        <router-link to="/">Home</router-link> - | - 
-        <router-link to="/af">Af</router-link> - | - 
+
+        <router-link to="/">Home</router-link>
+        <br />
+        <router-link to="/af">Af</router-link>
+        <br />
         <router-link to="/appfinanceiro">App Financeiro</router-link>
-      </div>
-        <!--
+      </v-navigation-drawer>
+      <!--
           tag router-view: exibe a pagina selecionada acima
-        -->
+      -->
       <router-view />
     </div>
   </div>
 </template>
 // tag script contem as variaveis e as funções
 <script>
-
 export default {
   // data: define todas as variaveis globais do arquivo
   data: () => ({
     login: "",
     senha: "",
-    show1: false
+    show1: false,
+    drawer: null
   }),
   // compute: define variaveis globais que são calculadas
   computed: {
@@ -97,7 +104,9 @@ export default {
 </script>
 // estilos em css da aplicação, o que deixa "bonitinho"
 <style>
-
+.esquerda {
+  text-align: left;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
