@@ -44,14 +44,15 @@
       cor: {{color}}
       <v-color-picker  class="ma-2" show-swatches v-model="color" />
     </div>
+    <br />
      <!-- 
        tag HelloWorld: chama um componete importado dento do script, logo abaixo do </template>
 
-       msg="Bem vindo a minha apli ca ção"
+       msg="Bem vindo a minha aplicação"
         está passando um texto para dentro do componente, o msg, é uma variavel definida lá no components/HelloWorld.vue
       -->
     <HelloWorld
-      msg="Bem vindo a minha apli ca ção"
+      msg="Bem vindo a minha aplicação"
     />
   </div>
 </template>
