@@ -50,26 +50,26 @@
     }-->
     <div v-if="logado" class="logado">
       <div class="esquerda">
-        <v-btn x-medium color="#1600f1" @click.stop="drawer = !drawer" fab small dark>
+        <v-btn color="grey darken-2" @click.stop="drawer = !drawer" outline icon small>
           <v-icon>mdi-menu</v-icon>
         </v-btn>
       </div>
-      <v-navigation-drawer v-model="drawer" absolute temporary>
-        <!--
+      <v-app dark>
+        <v-navigation-drawer v-model="drawer" absolute color="grey darken-2" temporary>
+          <!--
           tag router-link: dereciona o usuario para a pagina definida no parametro "to"
           as paginas são configuradas dentro de 'router/index.js'
-        -->
-
-        <router-link to="/">Home</router-link>
-        <br />
-        <router-link to="/af">Af</router-link>
-        <br />
-        <router-link to="/appfinanceiro">App Financeiro</router-link>
-      </v-navigation-drawer>
-      <!--
+          -->
+          <br />
+          <v-btn depressed block color="secondary" to="/">Home</v-btn>
+          <v-btn depressed block color="secondary" to="/af">Af</v-btn>
+          <v-btn depressed block color="secondary" to="/appfinanceiro">App Financeiro</v-btn>
+        </v-navigation-drawer>
+        <!--
           tag router-view: exibe a pagina selecionada acima
-      -->
-      <router-view />
+        -->
+        <router-view />
+      </v-app>
     </div>
   </div>
 </template>
